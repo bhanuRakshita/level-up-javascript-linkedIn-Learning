@@ -15,7 +15,31 @@
   <button id="next-stop">Next Stop</button>
 
   <script>
-    // Write your code here
+    nextStopBtn = document.querySelector("#next-stop");
+
+    function* journey(){
+        yield "Poughkeepsie";
+        yield "Newburgh";
+        yield "Peekskill"; 
+        yield "Yonkers" ;
+        yield "Bronx";
+        yield "Grand Center Station";     
+    
+      }
+    
+    const gen = journey();
+
+    function nextStation(){
+      let getStation = gen.next();
+      if(!(getStation.done)) {
+        console.log(getStation.value);        
+      } else{
+        console.log("WE MADE IT!");
+        nextStopBtn.disabled = true;
+      }
+    }
+   
+    nextStopBtn.addEventListener('click', nextStation)
 
   </script>
 </body>

@@ -30,10 +30,18 @@
       },
       {
         name: "Tiramisu",
-        isVegetarian: true
+        isVegetarian:   true
       }
     ]
     // Write your code here
+    
+    const vegMenu = menu.filter(obj=>obj.isVegetarian);
+    const list = document.querySelector('#menu');
+    vegMenu.forEach(item=>{
+      var listItem = document.createElement('li');
+      listItem.append(item.name);
+      list.append(listItem);
+    });
 
   </script>
 </body>

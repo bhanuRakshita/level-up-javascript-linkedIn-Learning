@@ -16,7 +16,49 @@
 
   <script>
     // Write your code here
+    const vendor1 = ['pizza', 'pasta'];
+    const vendor2 = ['pizza', 'calzones'];
+    const vendor3 = ['lobster'];
+    const vendor4 = ['calzones'];
 
+    //Solution1
+
+    const combinedMenu = document.querySelector('#combined-menu');
+
+    function addToList(set) {
+      set.forEach(element => {
+        var listItem = document.createElement('li');
+        var textNode = document.createTextNode(element);
+        listItem.append(textNode);
+        combinedMenu.append(listItem);
+      });
+    }
+
+    var combinedSet = new Set([...vendor1, ...vendor2, ...vendor3, ...vendor4]);
+    //addToList(combinedSet);
+
+
+    //Solution 2
+
+    function createMenu(menus) {
+      flatMenus = menus.flat();
+      let menuSet = new Set();
+      
+      flatMenus.forEach((ele)=>{
+        menuSet.add(ele);
+      });
+      
+      const combinedMenu = document.querySelector('#combined-menu');
+      menuSet.forEach((item)=>{
+        var listItem = document.createElement('li');
+        var textNode = document.createTextNode(item);
+        listItem.append(textNode);
+        combinedMenu.append(listItem);
+      })
+    }
+
+    createMenu([vendor1,vendor2,vendor3,vendor4]);
+  
   </script>
 </body>
 
